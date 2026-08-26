@@ -129,7 +129,10 @@ const TimeTableDayCard = ({
                 max={1440}
                 step={day.slotDuration}
                 onValueChange={(value) =>
-                  Array.isArray(value) && handleRangeChange(index, [...value])
+                  handleRangeChange(
+                    index,
+                    Array.isArray(value) ? [...value] : [value],
+                  )
                 }
                 className="w-full"
               />
