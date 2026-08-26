@@ -9,7 +9,7 @@ export async function isAuthenticated() {
 export async function requireAuth() {
   const authenticated = await isAuthenticated();
   if (!authenticated) {
-    redirect("/admin/login");
+    redirect("/login");
   }
   return authenticated;
 }
