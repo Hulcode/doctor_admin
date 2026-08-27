@@ -40,13 +40,10 @@ const getDateRange = (filter: "day" | "week" | "month") => {
   } else if (filter === "month") {
     start = new Date(today.getFullYear(), today.getMonth(), 1);
     end = new Date(today.getFullYear(), today.getMonth() + 1, 0);
-  } else if (filter === "day") {
-    start = new Date(today);
-    end = new Date(today);
   }
+
   return { start, end };
 };
-
 const getStatusStyles = (status: AppointmentStatus) => {
   switch (status) {
     case "pending":
@@ -97,15 +94,12 @@ const AppointmentsList = ({
   // Filter appointments based on search, time, and status
   const filteredAppointments = useMemo(() => {
     const { start, end } = getDateRange(timeFilter);
+    end.setHours(23, 59, 59, 999); // include the entire end day
 
     return appointments.filter((appointment) => {
       const appointmentDate = new Date(appointment.date);
 
-      if (
-        appointmentDate.getHours() < start.getHours() ||
-        appointmentDate.getHours() > end.getHours()
-      )
-        return false;
+      if (appointmentDate < start || appointmentDate > end) return false;
 
       if (
         searchQuery &&
