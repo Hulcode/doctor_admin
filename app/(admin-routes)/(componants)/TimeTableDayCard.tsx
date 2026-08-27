@@ -131,7 +131,7 @@ const TimeTableDayCard = ({
                 onValueChange={(value) =>
                   handleRangeChange(
                     index,
-                    Array.isArray(value) ? [...value] : [value],
+                    Array.isArray(value) ? [Number(...value)] : [Number(value)],
                   )
                 }
                 className="w-full"
