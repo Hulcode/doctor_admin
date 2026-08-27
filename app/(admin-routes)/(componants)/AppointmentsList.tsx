@@ -101,7 +101,11 @@ const AppointmentsList = ({
     return appointments.filter((appointment) => {
       const appointmentDate = new Date(appointment.date);
 
-      if (appointmentDate < start || appointmentDate > end) return false;
+      if (
+        appointmentDate.getHours() < start.getHours() ||
+        appointmentDate.getHours() > end.getHours()
+      )
+        return false;
 
       if (
         searchQuery &&
