@@ -29,21 +29,21 @@ interface Appointment {
 
 const getDateRange = (filter: "day" | "week" | "month") => {
   const today = new Date();
-  let start = new Date(today);
-  let end = new Date(today);
+  let start = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  let end = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
-  if (filter === "day") {
-    start = new Date(today);
-    end = new Date(today);
-  } else if (filter === "week") {
-    const dayOfWeek = today.getDay();
-    start.setDate(today.getDate());
-    end.setDate(start.getDate() + 7);
+  if (filter === "week") {
+    const dayOfWeek = start.getDay();
+    start.setDate(start.getDate() - dayOfWeek);
+    end = new Date(start);
+    end.setDate(start.getDate() + 6);
   } else if (filter === "month") {
     start = new Date(today.getFullYear(), today.getMonth(), 1);
     end = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+  } else if (filter === "day") {
+    start = new Date(today);
+    end = new Date(today);
   }
-
   return { start, end };
 };
 
