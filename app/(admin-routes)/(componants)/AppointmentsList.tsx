@@ -37,8 +37,8 @@ const getDateRange = (filter: "day" | "week" | "month") => {
     end = new Date(today);
   } else if (filter === "week") {
     const dayOfWeek = today.getDay();
-    start.setDate(today.getDate() - dayOfWeek);
-    end.setDate(start.getDate() + 6);
+    start.setDate(today.getDate());
+    end.setDate(start.getDate() + 7);
   } else if (filter === "month") {
     start = new Date(today.getFullYear(), today.getMonth(), 1);
     end = new Date(today.getFullYear(), today.getMonth() + 1, 0);
