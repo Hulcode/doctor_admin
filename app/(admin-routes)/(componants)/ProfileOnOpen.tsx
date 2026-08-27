@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Settings, LogOut, ShieldCheck } from "lucide-react";
 import { logout } from "@/app/actions/auth";
 import router from "next/router";
+import { Url } from "next/dist/shared/lib/router/router";
 const ProfileOnOpen = ({ isProfileOpen }: { isProfileOpen: boolean }) => {
   const handleLogout = async () => {
     await logout();
@@ -31,7 +32,7 @@ const ProfileOnOpen = ({ isProfileOpen }: { isProfileOpen: boolean }) => {
             الإعدادات
           </Link>
           <Link
-            href={process.env.MAIN_APP || "http://localhost:3000"}
+            href={process.env.MAIN_APP as Url}
             className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-slate-300 transition-colors hover:bg-red-900/20 hover:text-white"
           >
             <ShieldCheck className="h-4 w-4 text-[#fbbf24]" />
