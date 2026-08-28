@@ -86,9 +86,8 @@ export async function setSettings(formData: FormData, doctorId: string) {
     // ============================================
     // 5. REVALIDATE PATHS
     // ============================================
-    revalidatePath("/");
+
     revalidatePath("/settings");
-    revalidatePath("/about");
 
     return { success: true, doctorId: doctor.id };
   } catch (error) {
