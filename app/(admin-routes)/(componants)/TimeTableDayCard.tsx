@@ -160,6 +160,7 @@ const TimeTableDayCard = ({
                   className="appearance-none w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 pr-8 text-sm font-semibold text-[#062657] outline-none transition-all focus:border-[#075b9f] cursor-pointer"
                 >
                   <option value={15}>15 دقيقة</option>
+                  <option value={20}>20 دقيقة</option>
                   <option value={30}>30 دقيقة</option>
                   <option value={45}>45 دقيقة</option>
                   <option value={60}>60 دقيقة</option>
