@@ -17,6 +17,7 @@ import { useState } from "react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import MobileHeader from "./MobileHeader";
 import ProfileOnOpen from "../(componants)/ProfileOnOpen";
+import NotifyButton from "../(componants)/NotifyButton";
 
 // Add button:
 
@@ -95,6 +96,9 @@ const AdminHeader = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
 
         {/* Right Side Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Push Notification Toggle */}
+          <NotifyButton />
+
           {/* Admin Profile Dropdown */}
           <div className="relative">
             <button

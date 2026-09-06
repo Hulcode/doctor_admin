@@ -154,6 +154,14 @@ exports.Prisma.PatientScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PushSubscriptionScalarFieldEnum = {
+  id: 'id',
+  endpoint: 'endpoint',
+  p256dh: 'p256dh',
+  auth: 'auth',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.ReviewScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -217,6 +225,7 @@ exports.Prisma.ModelName = {
   Doctor: 'Doctor',
   Schedule: 'Schedule',
   Patient: 'Patient',
+  PushSubscription: 'PushSubscription',
   Review: 'Review',
   Appointment: 'Appointment'
 };
