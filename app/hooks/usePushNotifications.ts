@@ -26,25 +26,18 @@ export function usePushNotifications() {
 
   async function subscribe(): Promise<void> {
     try {
-      console.log("1. Starting subscribe...");
-
       const registration = await navigator.serviceWorker.register("/sw.js");
-      console.log("2. Service worker registered:", registration);
 
       const permission = await Notification.requestPermission();
-      console.log("3. Permission result:", permission);
 
       if (permission !== "granted") {
-        console.log("❌ STOPPED: permission not granted");
         setStatus("denied");
         return;
       }
 
       const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
-      console.log("4. Public key:", publicKey);
 
       if (!publicKey) {
-        console.log("❌ STOPPED: no public key");
         throw new Error("Missing NEXT_PUBLIC_VAPID_PUBLIC_KEY");
       }
 
@@ -52,20 +45,17 @@ export function usePushNotifications() {
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(publicKey),
       });
-      console.log("5. Subscription created:", subscription);
 
       const res = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(subscription),
       });
-      console.log("6. Fetch response status:", res.status);
+
       const data = await res.json();
-      console.log("7. Fetch response body:", data);
 
       setStatus("subscribed");
     } catch (err) {
-      console.log("❌ CAUGHT ERROR:", err);
       setStatus("error");
     }
   }

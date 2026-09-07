@@ -15,6 +15,7 @@ import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import { logout } from "@/app/actions/auth";
 import router from "next/router";
+import NotifyButton from "../(componants)/NotifyButton";
 const MobileHeader = ({ isOpen, adminNavLinks, closeMenu }: HeaderProps) => {
   const handleLogout = async () => {
     await logout();
@@ -51,7 +52,7 @@ const MobileHeader = ({ isOpen, adminNavLinks, closeMenu }: HeaderProps) => {
 
             {/* Mobile Divider */}
             <div className="my-2 border-t border-red-800/50" />
-
+            <NotifyButton show={true} />
             <Link
               href="/"
               onClick={closeMenu}

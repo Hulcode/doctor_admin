@@ -97,7 +97,7 @@ const AdminHeader = ({ isLoggedIn }: { isLoggedIn: boolean }) => {
         {/* Right Side Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Push Notification Toggle */}
-          <NotifyButton />
+          <NotifyButton show={false} />
 
           {/* Admin Profile Dropdown */}
           <div className="relative">
